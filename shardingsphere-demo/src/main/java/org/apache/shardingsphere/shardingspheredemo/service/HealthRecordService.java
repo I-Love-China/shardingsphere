@@ -6,6 +6,8 @@ import org.apache.shardingsphere.shardingspheredemo.repository.HealthRecordRepos
 import org.apache.shardingsphere.shardingspheredemo.repository.HealthTaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class HealthRecordService {
 
@@ -21,6 +23,10 @@ public class HealthRecordService {
 
     public void processHealthRecords() {
         insertHealthRecords();
+    }
+
+    public List<HealthRecord> queryAll() {
+        return healthRecordRepository.findAll();
     }
 
     private void insertHealthRecords() {
