@@ -46,6 +46,7 @@
         
         <module>shardingsphere-test</module>
         <module>shardingsphere-distribution</module>
+        <module>shardingsphere-demo</module>
     </modules>
     
     <properties>

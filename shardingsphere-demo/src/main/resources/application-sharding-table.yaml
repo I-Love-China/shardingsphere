@@ -1,0 +1,56 @@
+spring:
+  shardingsphere:
+    datasource:
+      names: ds2
+      ds2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://192.168.1.21:3308/ds2
+        username: root
+        password: 123456
+
+    rules:
+      sharding:
+        tables:
+          health_record:
+            actual-data-nodes: ds2.health_record$->{0..2}
+            key-generate-strategy:
+              column: record_id
+              key-generator-name: snowflake_key_generator
+            table-strategy:
+              standard:
+                sharding-column: record_id
+                sharding-algorithm-name: inline-health-record
+
+          health_task:
+            actual-data-nodes: ds2.health_task$->{0..2}
+            key-generate-strategy:
+              column: task_id
+              key-generator-name: snowflake_key_generator
+            table-strategy:
+              standard:
+                sharding-column: record_id
+                sharding-algorithm-name: inline-health-task
+
+        binding-tables:
+          - health_record
+          - health_task
+
+        broadcast-tables:
+          - health_level
+
+        key-generators:
+          snowflake_key_generator:
+            type: SNOWFLAKE
+            props:
+              worker-id: 33
+
+        sharding-algorithms:
+          inline-health-record:
+            type: INLINE
+            props:
+              algorithm-expression: health_record$->{record_id % 3}
+          inline-health-task:
+            type: INLINE
+            props:
+              algorithm-expression: health_task$->{record_id % 3}

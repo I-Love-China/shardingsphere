@@ -29,10 +29,14 @@ import java.util.List;
 @RequiredArgsConstructor
 @Getter
 public final class LogicSQL {
-    
+
     private final SQLStatementContext<?> sqlStatementContext;
-    
+
     private final String sql;
-    
+
+    /**
+     * PreparedStatement 中用于保存预编译语句的参数，
+     * 普通 Statement 中这个变量为 Collections.emptyList();
+     */
     private final List<Object> parameters;
 }

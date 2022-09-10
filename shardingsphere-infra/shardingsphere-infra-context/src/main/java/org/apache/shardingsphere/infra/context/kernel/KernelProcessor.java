@@ -43,6 +43,10 @@ public final class KernelProcessor {
      * @return execution context
      */
     public ExecutionContext generateExecutionContext(final LogicSQL logicSQL, final ShardingSphereMetaData metaData, final ConfigurationProperties props) {
+        /**
+         * ReadwriteSplittingSQLRouter
+         * ShardingSQLRouter
+         */
         RouteContext routeContext = route(logicSQL, metaData, props);
         SQLRewriteResult rewriteResult = rewrite(logicSQL, metaData, props, routeContext);
         ExecutionContext result = createExecutionContext(logicSQL, metaData, routeContext, rewriteResult);
