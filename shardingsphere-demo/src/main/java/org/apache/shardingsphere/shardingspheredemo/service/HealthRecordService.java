@@ -30,7 +30,7 @@ public class HealthRecordService {
     }
 
     private void insertHealthRecords() {
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i <= 2; i++) {
             HealthRecord healthRecord = insertHealthRecord(i);
             insertHealthTask(i, healthRecord);
         }
