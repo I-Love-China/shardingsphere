@@ -5,10 +5,13 @@ spring:
       ds2:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
-        jdbc-url: jdbc:mysql://192.168.1.21:3308/ds2
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds2
         username: root
         password: 123456
 
+
+    props:
+      max-connections-size-per-query: 3
     rules:
       sharding:
         tables:

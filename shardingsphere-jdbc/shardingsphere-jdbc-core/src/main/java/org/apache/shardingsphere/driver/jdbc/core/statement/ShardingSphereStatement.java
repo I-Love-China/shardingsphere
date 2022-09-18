@@ -201,7 +201,7 @@ public final class ShardingSphereStatement extends AbstractStatementAdapter {
 
     private DriverExecutionPrepareEngine<JDBCExecutionUnit, Connection> createDriverExecutionPrepareEngine() {
         int maxConnectionsSizePerQuery = metaDataContexts.getProps().<Integer>getValue(ConfigurationPropertyKey.MAX_CONNECTIONS_SIZE_PER_QUERY);
-        return new DriverExecutionPrepareEngine<>(JDBCDriverType.STATEMENT, maxConnectionsSizePerQuery, connection.getConnectionManager(),
+        return new DriverExecutionPrepareEngine<>(JDBCDriverType.STATEMENT, 3, connection.getConnectionManager(),
                 statementOption, metaDataContexts.getMetaData(connection.getSchema()).getRuleMetaData().getRules());
     }
 

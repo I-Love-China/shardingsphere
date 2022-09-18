@@ -1,10 +1,13 @@
 package org.apache.shardingsphere.shardingspheredemo.service;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.shardingsphere.shardingspheredemo.ShardingsphereDemoApplication;
 import org.apache.shardingsphere.shardingspheredemo.entity.HealthRecord;
+import org.apache.shardingsphere.shardingspheredemo.repository.HealthRecordRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,9 +21,13 @@ public class HealthRecordServiceTest {
     @Autowired
     private HealthRecordService healthRecordService;
 
+    @Autowired
+    private SqlSessionFactory sqlSessionFactory;
+
     @Test
+    @Transactional
     public void test() {
-        healthRecordService.processHealthRecords();
+//        healthRecordService.processHealthRecords();
         List<HealthRecord> healthRecords = healthRecordService.queryAll();
         System.out.println(healthRecords);
     }
