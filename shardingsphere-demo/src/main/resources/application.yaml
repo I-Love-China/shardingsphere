@@ -1,4 +1,10 @@
 spring:
+  datasource:
+    hikari:
+      username: root
+      password: root
+      jdbc-url:
+      driver-class-name:
   profiles:
     active: sharding-table
   shardingsphere:

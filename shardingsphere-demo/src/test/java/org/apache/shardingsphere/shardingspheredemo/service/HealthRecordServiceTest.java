@@ -22,14 +22,24 @@ public class HealthRecordServiceTest {
     private HealthRecordService healthRecordService;
 
     @Autowired
+    private HealthRecordRepository healthRecordRepository;
+
+    @Autowired
     private SqlSessionFactory sqlSessionFactory;
 
     @Test
-    @Transactional
+//    @Transactional
     public void test() {
 //        healthRecordService.processHealthRecords();
         List<HealthRecord> healthRecords = healthRecordService.queryAll();
         System.out.println(healthRecords);
+    }
+
+    @Test
+    public void testUpdateShardingKey() {
+        // 777673759166300160L
+        healthRecordRepository.updateRecordId(777673759166300160L, 777673759166300161L);
+        System.out.println(1);
     }
 
 }

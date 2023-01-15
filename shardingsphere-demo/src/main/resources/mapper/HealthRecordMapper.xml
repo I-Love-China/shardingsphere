@@ -32,4 +32,16 @@
             #{id}
         </foreach>
     </select>
+
+    <select id="queryById" resultMap="healthRecordResultMap">
+        SELECT *
+        FROM health_record
+        WHERE record_id = #{recordId}
+    </select>
+
+    <update id="updateRecordId">
+        UPDATE health_record
+        SET record_id = #{newId}
+        WHERE record_id = #{oldId}
+    </update>
 </mapper>
