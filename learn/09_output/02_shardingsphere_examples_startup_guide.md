@@ -26,6 +26,8 @@ sdk use java 11.0.21-kona
 # 4. 执行编译和安装
 # -Prelease 参数会打包所有必须的依赖，请务必加上
 ./mvnw clean install -Prelease -T0.8C -Djacoco.skip=true -Dcheckstyle.skip=true -Drat.skip=true -Dmaven.javadoc.skip=true -Dspotless.apply.skip=true -DskipTests 
+
+mvnd clean install -Prelease -Djacoco.skip=true -Dcheckstyle.skip=true -Drat.skip=true -Dmaven.javadoc.skip=true -Dspotless.apply.skip=true -DskipTests
 ```
 
 ### 步骤 2：初始化数据库（可选）
